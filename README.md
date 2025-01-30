@@ -1,5 +1,5 @@
 🎮 Interactive Sudoku Solver with AI-Powered Image Recognition
-Unleash the power of automation to solve Sudoku puzzles instantly! This GUI application combines computer vision and deep learning to extract, solve, and visualize Sudoku puzzles from images.
+Unleash the power of automation to solve Sudoku puzzles instantly! This GUI application uses deep learning to extract, solve, and visualize Sudoku puzzles from images.
 
 ✨ Key Features
 🖼️ Image-to-Sudoku Conversion: Upload any Sudoku image and let the system digitize it.
@@ -29,5 +29,8 @@ Deep Learning: TensorFlow/Keras for training the digit recognition model.
 GUI: Kivy, KivyMD for an intuitive interface.
 
 Backend: Python for logic and NumPy for matrix operations.
+
+DEMO:
+![Generated_Sudoku___________](https://github.com/user-attachments/assets/ff608ecb-6f19-4091-9ca1-d169462fb208)
 
 
