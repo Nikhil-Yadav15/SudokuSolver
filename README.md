@@ -30,7 +30,12 @@ GUI: Kivy, KivyMD for an intuitive interface.
 
 Backend: Python for logic and NumPy for matrix operations.
 
-DEMO:
-![Generated_Sudoku___________](https://github.com/user-attachments/assets/ff608ecb-6f19-4091-9ca1-d169462fb208)
+
+📸 Demo
+
+Input: ![sudoku_100](https://github.com/user-attachments/assets/b0c10b63-5f5b-42ad-98fa-a5113a9c0828)
+
+
+Output: ![Generated_Sudoku___________](https://github.com/user-attachments/assets/ff608ecb-6f19-4091-9ca1-d169462fb208)
 
 
