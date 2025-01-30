@@ -1,3 +1,7 @@
+import os
+os.environ['KIVY_LOG_LEVEL'] = 'error'
+os.environ['KIVY_NO_CONSOLELOG'] = '1'
+from tensorflow.keras.models import load_model
 from kivy.lang import Builder
 from kivy.animation import Animation
 from kivy.uix.boxlayout import BoxLayout
@@ -12,18 +16,18 @@ from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDRaisedButton, MDFlatButton, MDRoundFlatButton
 from kivymd.uix.fitimage import FitImage
 from kivy.core.window import Window
-import os
 from kivy.core.image import Image
 from io import BytesIO
 import tempfile
 from kivy.uix.behaviors import ButtonBehavior
-
-
+model = load_model("digit_recognition.keras")
 Window.size = (400, 650)
 KV = '''
 #:import os os
 #:import Window kivy.core.window.Window
 #:import HoverCard __main__.HoverCard
+
+
 <HoverCard>:
     elevation: 6
     md_bg_color: [1, 1, 1, 0.8]
@@ -96,7 +100,7 @@ BoxLayout:
         Rectangle:
             pos: self.pos
             size: self.size
-            source: 'dall2.png'
+            source: 'bg.png'
         Color:
             rgba: [0.1, 0.1, 0.1, 0.7]
         Rectangle:
@@ -131,14 +135,13 @@ BoxLayout:
 
                     RelativeLayout:
                         MDRaisedButton:
-                            id: this
                             opacity: 0
                             size_hint: 0.95, 0.95
                             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                             on_release: app.show_full_image()
                         FitImage:
                             id: sudoku_image
-                            source: 'dall3.png'
+                            source: 'box.png'
                             size_hint: 0.95, 0.95
                             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                             allow_stretch: True
@@ -313,7 +316,7 @@ FilePopupContent:
     def solve_sudoku(self):
         if self.file_path:
             try:
-                self.solver = SudokuSolver(self.file_path)
+                self.solver = SudokuSolver(self.file_path, model)
                 solved_pil_image = self.solver.give()
 
                 img_byte_arr = BytesIO()
@@ -328,7 +331,6 @@ FilePopupContent:
                 self.root.ids.sudoku_image.source = self.solved_image_path
                 self.root.ids.status_label.text = "Solved!"
                 self.root.ids.progress_bar.opacity = 1
-                self.root.ids.status_label.text = "try"
                 self.root.ids.status_label.opacity = 1
                 self.root.ids.sudoku_image.reload()
                 self.root.ids.solved_label.text = "SOLVED!"
@@ -410,6 +412,5 @@ FilePopupContent:
             title_color=self.theme_cls.primary_color
         )
         self.image_popup.open()
-
 
 SudokuSolverApp().run()
