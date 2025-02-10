@@ -37,8 +37,6 @@ KV = '''
     pos_hint: {"center_x": 0.5}
     on_enter: self.elevation = 30
     on_leave: self.elevation = 6
-
-
 <FilePopupContent@BoxLayout>:
     orientation: 'vertical'
     spacing: "10dp"
@@ -228,7 +226,6 @@ BoxLayout:
                     md_bg_color: app.theme_cls.primary_color
 
 '''
-
 class HoverCard(MDCard):
     radius = ListProperty([20, 20, 20, 20])
 
@@ -412,5 +409,4 @@ FilePopupContent:
             title_color=self.theme_cls.primary_color
         )
         self.image_popup.open()
-
 SudokuSolverApp().run()
