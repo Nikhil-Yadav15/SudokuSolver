@@ -103,4 +103,3 @@ class SudokuSolver:
     for i in range(9):
         for j in range(9):
             draw.text((j * cell_size + cell_size//3, i * cell_size + cell_size//3), str(sudoku[i][j]), fill=(3, 127, 252), font = font)
-
